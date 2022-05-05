@@ -35,7 +35,9 @@ const UserContextProvider: React.FC = (props) => {
                 email,
                 password
             });
-            console.log(response.data.user);
+            // console.log(response.data.user);
+            setUser(response.data.user)
+            setToken(response.data.token)
             
         } catch (error) {
             console.log(error);
