@@ -29,7 +29,7 @@ const UserContextProvider: React.FC = (props) => {
     const [user, setUser] = useState<User | null>(null);
     const [token, setToken] = useState<string | null>(null);
     const login = async (email: string, password: string) => {
-        console.log("IN USERCONTEXT LOGIN")
+        // console.log("IN USERCONTEXT LOGIN")
         try {
             const response = await axios.post("http://localhost:3000/login", {
                 email,
