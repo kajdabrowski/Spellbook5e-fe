@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native'
 import {useContext, useState} from 'react'
+import { colors } from '../styles/baseStyles'
 import { UserContext } from '../contexts/user/UserContext'
 
 const Login: React.FC = () => {
@@ -15,7 +16,8 @@ const Login: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.loginText}>Login to Spellbook5e</Text>
+      <Image source={require("../../assets/images/DnD_Logo.png")} style={styles.image} />
+      <Text style={styles.imageText}>FIFTH EDITION SPELLBOOK</Text>
       <TextInput 
         style={styles.textInput}
         placeholder='E-mail'
@@ -31,23 +33,30 @@ const Login: React.FC = () => {
       onChangeText={(text) => setPassword(text)}
       />
       <View style={styles.loginButton}>
-          <Button color={"white"} title="Log in" onPress={handleLogin}/>
+          <Button color={"white"} title="LOG IN" onPress={handleLogin}/>
       </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+
     container: {
-        // flex: 1,
-        backgroundColor: "black",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100%"
+       // flex: 1,
+      backgroundColor: colors.lightblue,
+      alignItems: "center",
+      justifyContent: "center",
+      height: "100%"
     },
-    loginText: {
-        color: "white",
-        fontSize: 16
+    image: {
+      height: 100,
+      width: 300,
+      marginVertical: 10
+    },
+    imageText: {
+      color: colors.dndred,
+      fontWeight: "700",
+      marginBottom: 50
     },
     textInput: {
         backgroundColor: "white",
@@ -62,11 +71,12 @@ const styles = StyleSheet.create({
     loginButton: {
         width: 150,
         borderRadius: 20,
-        marginTop: 20,
+        marginTop: 50,
         alignSelf: "center",
         padding: 10,
-        backgroundColor: "red",
-    }
+        backgroundColor: colors.dndred,
+        fontWeight: "900"
+    },
 })
 
 export default Login
