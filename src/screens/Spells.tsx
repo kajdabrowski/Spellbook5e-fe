@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 
 import { getAllSpells,getAllSpells2, getBardSpells, getSpellsByClassAndLevel } from '../api'
 import { UserContext } from '../contexts/user/UserContext'
+import { colors } from '../styles/baseStyles'
 
 const Spells = () => {
 const {token} = useContext(UserContext)!
@@ -11,7 +12,7 @@ const {token} = useContext(UserContext)!
     const spells = await getSpellsByClassAndLevel("bard", 5, token! )
   }
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Spell Screen</Text>
       <View>
         <Button title={"NY"} onPress={handleGetSpells} />
@@ -22,4 +23,9 @@ const {token} = useContext(UserContext)!
 
 export default Spells
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.lightblue,
+    height: "100%"
+  }
+})

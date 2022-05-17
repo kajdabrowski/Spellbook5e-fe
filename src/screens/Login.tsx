@@ -42,11 +42,12 @@ const Login: React.FC = () => {
 const styles = StyleSheet.create({
 
     container: {
-       // flex: 1,
+      flex: 1,
       backgroundColor: colors.lightblue,
       alignItems: "center",
       justifyContent: "center",
-      height: "100%"
+      // justifyContent: "flex-start",
+      height: "100%",
     },
     image: {
       height: 100,
@@ -71,11 +72,11 @@ const styles = StyleSheet.create({
     loginButton: {
         width: 150,
         borderRadius: 20,
-        marginTop: 50,
+        marginTop: 75,
         alignSelf: "center",
         padding: 10,
         backgroundColor: colors.dndred,
-        fontWeight: "900"
+        // fontWeight: "700"
     },
 })
 
