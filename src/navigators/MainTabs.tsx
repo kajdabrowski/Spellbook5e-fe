@@ -1,11 +1,10 @@
-import { Dimensions, Platform } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { StyleSheet } from 'react-native'
 import Spells from '../screens/Spells'
 import Characters from '../screens/Characters'
-import Logout from '../screens/Logout'
+import Settings from '../screens/Settings'
 import { colors } from "../styles/baseStyles";
-import { SpellIcon, CharacterIcon, LogoutIcon } from "../components/iconList";
+import { SpellIcon, CharacterIcon, LogoutIcon, SettingsIcon } from "../components/iconList";
 
 const Tab = createBottomTabNavigator();
 
@@ -30,15 +29,15 @@ const MainTabNavigator = () => {
         if (route.name === "Characters") {
             return <CharacterIcon size={20} color={color}/>
         }
-        if(route.name === "Logout") {
-            return <LogoutIcon size={20} color={color}/>
+        if(route.name === "Settings") {
+            return <SettingsIcon size={20} color={color}/>
         }
       }
      })}
      >
          <Tab.Screen name={"Spells"} component={Spells} />
          <Tab.Screen name={"Characters"} component={Characters} />
-         <Tab.Screen name={"Logout"} component={Logout} />
+         <Tab.Screen name={"Settings"} component={Settings}/>
      </Tab.Navigator>
  )
 }

@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Logout = () => {
+const Settings = () => {
   return (
     <View>
       <Text>Logout Screen</Text>
@@ -9,6 +9,6 @@ const Logout = () => {
   )
 }
 
-export default Logout
+export default Settings
 
 const styles = StyleSheet.create({})
