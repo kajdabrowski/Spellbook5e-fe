@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Image } from 'react-native'
 import {useContext, useState} from 'react'
 import { colors } from '../styles/baseStyles'
 import { UserContext } from '../contexts/user/UserContext'
+import Button from '../components/Button'
 
 const Login: React.FC = () => {
     const { login } = useContext(UserContext)!
@@ -10,8 +11,7 @@ const Login: React.FC = () => {
 
     const handleLogin = () => {
         login(email, password)
-        console.log("IN HANDLELOGIN");
-        
+        console.log("IN HANDLELOGIN");   
     }
 
   return (
@@ -32,8 +32,9 @@ const Login: React.FC = () => {
       value={password}
       onChangeText={(text) => setPassword(text)}
       />
-      <View style={styles.loginButton}>
-          <Button color={"white"} title="LOG IN" onPress={handleLogin}/>
+      <View>
+          {/* <Button color={"white"} title="LOG IN" onPress={handleLogin}/> */}
+        <Button style={"button"} title={"LOG IN"} onPress={handleLogin}/>
       </View>
     </View>
   )

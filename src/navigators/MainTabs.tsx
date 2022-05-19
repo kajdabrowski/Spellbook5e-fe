@@ -5,6 +5,7 @@ import Characters from '../screens/Characters'
 import Settings from '../screens/Settings'
 import { colors } from "../styles/baseStyles";
 import { SpellIcon, CharacterIcon, LogoutIcon, SettingsIcon } from "../components/iconList";
+import Logout from '../screens/Settings'
 
 const Tab = createBottomTabNavigator();
 
@@ -19,8 +20,8 @@ const MainTabNavigator = () => {
       tabBarShowLabel: true,
       tabBarStyle: {
       backgroundColor: colors.lightgrey,
-      borderTopLeftRadius: 15,
-      borderTopRightRadius: 15,    
+    //   borderTopLeftRadius: 15,
+    //   borderTopRightRadius: 15,    
       },
       tabBarIcon:({size, color}) => {
         if (route.name === "Spells") {
