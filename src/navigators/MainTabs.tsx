@@ -36,9 +36,9 @@ const MainTabNavigator = () => {
       }
      })}
      >
-         <Tab.Screen name={"Spells"} component={Spells} />
-         <Tab.Screen name={"Characters"} component={Characters} />
-         <Tab.Screen name={"Settings"} component={Settings}/>
+         <Tab.Screen name={"Spells"} component={Spells} options={{headerShown: false}}/>
+         <Tab.Screen name={"Characters"} component={Characters} options={{headerShown: false}}/>
+         <Tab.Screen name={"Settings"} component={Settings} options={{headerShown: false}}/>
      </Tab.Navigator>
  )
 }

@@ -1,12 +1,14 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View, Button, SafeAreaView } from 'react-native'
 import React from 'react'
 import { colors } from '../styles/baseStyles'
+import Header from '../components/Header'
 
 const Characters = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <Header />
       <Text>Character Screen</Text>
-    </View>
+    </SafeAreaView>
   )
 }
 

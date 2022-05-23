@@ -1,8 +1,9 @@
 import React, {useContext} from 'react'
 import { UserContext } from '../contexts/user/UserContext';
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 import { colors } from '../styles/baseStyles';
 import Button from '../components/Button';
+import Header from '../components/Header';
     
     const Settings = () => {
         const { logout } = useContext(UserContext)!;
@@ -13,12 +14,13 @@ import Button from '../components/Button';
         }
 
     return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <Header />
       <Text>Logout screen</Text>
 
       {/* <Button title={"Log out"} onPress={handleLogout}/> */}
       <Button title={"LOG OUT"} style={"button"} onPress={handleLogout}/>
-    </View>
+    </SafeAreaView>
   )
 }
 
