@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, FlatList, ListRenderItem, SafeAreaView} from 'react-native'
+import { StyleSheet, Text, View, TextInput, FlatList, ListRenderItem, Pressable, SafeAreaView} from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 
 import { getSpellsByClassAndLevel } from '../api'
@@ -7,34 +7,48 @@ import { colors } from '../styles/baseStyles'
 import Button from '../components/Button'
 import { Spell } from '../types'
 import Header from '../components/Header'
-// import SpellList from '../components/SpellList'
+import { useNavigation } from "@react-navigation/native";
 
-const Spells = () => {
+type SpellProps = {
+  spells: Spell[]
+}
+
+const Spells = (props: SpellProps) => {
 const {token} = useContext(UserContext)!
 const [characterClass, setCharacterClass] = useState("")
 const [characterLevel, setCharacterLevel] = useState("") 
-const [spells, setSpells] = useState<Spell[]>([]) //spells är data till flatlisten
+const [spells, setSpells] = useState<Spell[]>([])
 
+const navigation = useNavigation()
 
   const handleGetSpells = async () => {
     // const spells = await getSpellsByClassAndLevel("bard", 5, token! )
+    //! getSpellsByClassAndLevel måste skrivas om så den hämtar spells utifrån char level och inte spell level
     const fetchedSpells:Spell[] = await getSpellsByClassAndLevel(characterClass, Number.parseInt(characterLevel), token!)
     setSpells(fetchedSpells)
   }
 
-  //! spell items in flatlist
-  const Item = ({data}: {data: Spell}) => (
+  const handleSpellItem = (spell: any) =>{
+    // @ts-ignore
+    navigation.navigate("Single spell", {spell})
+    setCharacterClass("")
+    setCharacterLevel("")
+  }
+
+  const Item = ({item}: {item: Spell}) => (
     <View style={styles.spellItem}>
-      <Text style={styles.spellItemHeadline}>{data.name}</Text>
-      <Text style={styles.spellItemText}>{data.level}</Text>
-      <Text>{data.school}</Text>
+      <Pressable onPress={() => handleSpellItem(item)}>
+        <Text style={styles.spellItemHeadline}>{item.name}</Text>
+        <Text style={styles.spellItemText}>{item.level}</Text>
+        <Text>{item.school}</Text>
+      </Pressable>
     </View>
   )
 
   return (
     <SafeAreaView style={styles.container}>
       <Header />
-      <Text style={styles.headline}>Find spells by class and level!</Text>
+      <Text style={styles.headline}>Search for spells by class and level:</Text>
       <View style={styles.inputContainer}>
         <TextInput 
         style={styles.textInput} 
@@ -60,7 +74,7 @@ const [spells, setSpells] = useState<Spell[]>([]) //spells är data till flatlis
       <SafeAreaView>
       <FlatList
         data={spells}
-        renderItem={({item}) => <Item data={item} />} 
+        renderItem={({item}) => <Item item={item} />} 
         keyExtractor={(item: Spell) => item.name}
       />
       </SafeAreaView>
@@ -78,6 +92,7 @@ const styles = StyleSheet.create({
   },
   headline: {
     textAlign: "center",
+    fontSize: 16,
   },
   inputContainer: {
     flex: 1,
@@ -102,7 +117,7 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
     paddingHorizontal: 15,
     textAlign: "center",
-    width: "100%"
+    width: "90%"
   },
   spellItemHeadline: {
     fontWeight: "bold"

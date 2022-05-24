@@ -30,7 +30,7 @@ export interface Spell {
 
 export const getSpellsByClassAndLevel = async (dnd_class: string, level:number, token: string) => { //skicka ned class, level och token från userContext. 
     const response = await API.get(`/spells/${dnd_class}/${level}`, {headers: {authorization: `Bearer ${token}`} })
-    console.log(response.data);
+    // console.log(response.data);
     return response.data
 }
 
