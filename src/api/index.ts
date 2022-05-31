@@ -25,7 +25,7 @@ export interface Spell {
     circles: string,
     document__slug: string,
     document__title: string,
-    document__license_url: URL //string or URL type?
+    document__license_url: URL 
 }
 
 export const getSpellsByClassAndLevel = async (dnd_class: string, level:number, token: string) => { //skicka ned class, level och token från userContext. 

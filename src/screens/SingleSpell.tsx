@@ -29,7 +29,7 @@ const SingleSpell = (props:SpellProps) => {
     <SafeAreaView style={styles.container}>
         <Header />
         <View style={styles.topInfo}>
-            <Text>{spell.name}</Text>
+            <Text style={styles.spellName}>{spell.name}</Text>
             <Text>{spell.level} {spell.school}</Text>
             <Text>Casting time: {spell.casting_time}</Text>
             <Text>Range: {spell.range}</Text>
@@ -40,10 +40,10 @@ const SingleSpell = (props:SpellProps) => {
             <Text>{spell.desc}</Text>
         </ScrollView>
         <View style={styles.bottomInfo}>
-            <Text>Castable by: {spell.dnd_class}</Text>
-            <Text>Source: {spell.page}</Text>
+            <Text style={styles.spellClass}>Castable by: {spell.dnd_class}</Text>
+            <Text style={styles.spellSource}>Source: {spell.page}</Text>
         </View>
-        <Button onPress={handlePress} title={"GO BACK"}/>
+        <Button onPress={handlePress} title={"GO BACK"} style={"button"}/>
     </SafeAreaView>
   )
 }
@@ -53,21 +53,35 @@ export default SingleSpell
 const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.lightblue,
-        height: "100%"
+        height: "100%",
     },
     topInfo: {
-        marginVertical: 10,
-        // borderBottomWidth: 1,
-        // borderColor: colors.dndred
+        marginVertical: 15,
+        paddingHorizontal: 5,
+        fontStyle: 'italic'
     },
     contentContainer: {
-        paddingHorizontal: 5,
+        paddingHorizontal: 10,
         paddingVertical: 10
     },
     bottomInfo: {
-        marginVertical: 5,
-            // borderTopWidth: 1,
-            // borderColor: colors.dndred
+        marginVertical: 15,
+        fontStyle: "italic",
+        paddingHorizontal: 5
+    },
+    spellName: {
+        textAlign: "center",
+        fontWeight: "700",
+        fontSize: 21,
+        color: colors.dndred,
+        marginBottom: 25,
+    },
+    spellClass: {
+        fontStyle: "italic"
+    },
+    spellSource: {
+        fontStyle: "italic"
     }
+
 
 })

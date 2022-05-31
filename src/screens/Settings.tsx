@@ -16,8 +16,7 @@ import Header from '../components/Header';
     return (
     <SafeAreaView style={styles.container}>
       <Header />
-      {/* <Button title={"Log out"} onPress={handleLogout}/> */}
-      <Button title={"LOG OUT"} style={"button"} onPress={handleLogout}/>
+      <Button title={"LOG OUT"} style={"button"} onPress={handleLogout} />
     </SafeAreaView>
   )
 }

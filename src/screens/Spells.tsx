@@ -23,7 +23,6 @@ const navigation = useNavigation()
 
   const handleGetSpells = async () => {
     // const spells = await getSpellsByClassAndLevel("bard", 5, token! )
-    //! getSpellsByClassAndLevel måste skrivas om så den hämtar spells utifrån char level och inte spell level
     const fetchedSpells:Spell[] = await getSpellsByClassAndLevel(characterClass, Number.parseInt(characterLevel), token!)
     setSpells(fetchedSpells)
   }
@@ -48,11 +47,11 @@ const navigation = useNavigation()
   return (
     <SafeAreaView style={styles.container}>
       <Header />
-      <Text style={styles.headline}>Search for spells by class and level:</Text>
+      <Text style={styles.headline}>Search spells by character class and spell level:</Text>
       <View style={styles.inputContainer}>
         <TextInput 
         style={styles.textInput} 
-        placeholder='Class' 
+        placeholder='Character class' 
         placeholderTextColor={colors.lightgrey} 
         keyboardType='default' 
         value={characterClass} 
@@ -60,7 +59,7 @@ const navigation = useNavigation()
         />
         <TextInput 
         style={styles.textInput} 
-        placeholder='Level' 
+        placeholder='Spell level' 
         placeholderTextColor={colors.lightgrey} 
         keyboardType='numeric' 
         textContentType='creditCardNumber'
@@ -93,6 +92,7 @@ const styles = StyleSheet.create({
   headline: {
     textAlign: "center",
     fontSize: 16,
+    marginVertical: 15
   },
   inputContainer: {
     flex: 1,

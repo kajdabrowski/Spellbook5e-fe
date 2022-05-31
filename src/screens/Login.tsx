@@ -31,6 +31,8 @@ const Login: React.FC = () => {
       autoCapitalize='none'
       value={password}
       onChangeText={(text) => setPassword(text)}
+      secureTextEntry={true}
+
       />
       <View>
           {/* <Button color={"white"} title="LOG IN" onPress={handleLogin}/> */}
